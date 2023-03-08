@@ -1,0 +1,43 @@
+[training@localhost ~]$ hbase shell
+23/03/03 13:16:34 WARN conf.Configuration: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.92.1-cdh4.1.1, rUnknown, Tue Oct 16 11:44:19 PDT 2012
+
+hbase(main):001:0> create 'hbaseUserRating4','cf1'
+0 row(s) in 1.6460 seconds
+
+hbase(main):002:0> put 'hbaseUserRating4','10000','cf1:movieid','42'
+0 row(s) in 0.1340 seconds
+
+hbase(main):003:0> put 'hbaseUserRating4','11000','cf1:rating','5'
+0 row(s) in 0.0050 seconds
+
+hbase(main):004:0> put 'hbaseUserRating4','11000','cf1:movieid','21'
+0 row(s) in 0.0040 seconds
+
+hbase(main):005:0> put 'hbaseUserRating4','10000','cf1:rating','4'
+0 row(s) in 0.0050 seconds
+
+hbase(main):006:0> scan 'hbaseUserRating4'
+ROW                   COLUMN+CELL                                               
+ 10000                column=cf1:movieid, timestamp=1677829734886, value=42     
+ 10000                column=cf1:rating, timestamp=1677829818784, value=4       
+ 11000                column=cf1:movieid, timestamp=1677829798931, value=21     
+ 11000                column=cf1:rating, timestamp=1677829772857, value=5       
+2 row(s) in 0.0410 seconds
+
+hbase(main):007:0> scan 'hbaseUserRating4',{VERSIONS=>3}
+ROW                   COLUMN+CELL                                               
+ 10000                column=cf1:movieid, timestamp=1677830233095, value=43     
+ 10000                column=cf1:movieid, timestamp=1677829734886, value=42     
+ 10000                column=cf1:rating, timestamp=1677830233095, value=4       
+ 10000                column=cf1:rating, timestamp=1677829818784, value=4       
+ 11000                column=cf1:movieid, timestamp=1677830233095, value=22     
+ 11000                column=cf1:movieid, timestamp=1677829798931, value=21     
+ 11000                column=cf1:rating, timestamp=1677830233095, value=5       
+ 11000                column=cf1:rating, timestamp=1677829772857, value=5       
+2 row(s) in 0.0840 seconds
+
+hbase(main):008:0> 
+

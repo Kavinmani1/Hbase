@@ -1,0 +1,65 @@
+                                          
+                                            HBase Flush and Compaction
+
+
+[training@localhost ~]$ hbase shell
+23/03/06 17:41:17 WARN conf.Configuration: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.92.1-cdh4.1.1, rUnknown, Tue Oct 16 11:44:19 PDT 2012
+
+hbase(main):001:0> create 'mytbl','cf'
+0 row(s) in 1.7880 seconds
+
+hbase(main):002:0> put 'mytbl','row1','cf:col','foo'
+0 row(s) in 0.1070 seconds
+
+hbase(main):003:0> flush 'mytbl'
+0 row(s) in 0.4560 seconds
+
+hbase(main):004:0> put 'mytbl','row2','cf:col','bar'
+0 row(s) in 0.0060 seconds
+
+hbase(main):005:0> flush 'mytbl'
+0 row(s) in 1.9200 seconds
+
+hbase(main):006:0> major_compact 'mytbl'
+0 row(s) in 0.0970 seconds
+
+hbase(main):007:0> 
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+                                             HBase Flush and Compaction(hadoop terminal)
+
+
+[training@localhost ~]$ hadoop fs -ls/hbase/mytbl/*/cf
+-ls/hbase/mytbl/*/cf: Unknown command
+[training@localhost ~]$ hadoop fs -ls /hbase/mytbl/*/cf
+\[training@localhost ~]$ hadoop fs -ls /hbase/mytbl/*/cf
+[training@localhost ~]$ hadoop fs -ls /hbase/mytbl/*/cf
+[training@localhost ~]$ hadoop fs -ls /hbase/mytbl/*/cf
+Found 1 items
+-rw-r--r--   1 hbase supergroup        613 2023-03-06 17:44 /hbase/mytbl/4580078fb8c824562667355db845cc0d/cf/2fb5a1fbc25f47a387f9da6f9183a3d9
+[training@localhost ~]$ hadoop fs -ls /hbase/mytbl/*/cf
+Found 2 items
+-rw-r--r--   1 hbase supergroup        613 2023-03-06 17:44 /hbase/mytbl/4580078fb8c824562667355db845cc0d/cf/2fb5a1fbc25f47a387f9da6f9183a3d9
+-rw-r--r--   1 hbase supergroup        613 2023-03-06 17:44 /hbase/mytbl/4580078fb8c824562667355db845cc0d/cf/30e530fca6664839bc445ea383e40de1
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.HFile --printkv --file /hbase/mytbl/4580078fb8c824562667355db845cc0d/cf/30e530fca6664839bc445ea383e40de1
+23/03/06 17:46:51 WARN conf.Configuration: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+23/03/06 17:46:51 WARN conf.Configuration: fs.default.name is deprecated. Instead, use fs.defaultFS
+23/03/06 17:46:52 INFO hfile.CacheConfig: Allocating LruBlockCache with maximum size 123.4m
+K: row2/cf:col/1678104873851/Put/vlen=3 V: bar
+Scanned kv count -> 1
+[training@localhost ~]$ hadoop fs -ls /hbase/mytbl/*/cfFound 1 items
+-rw-r--r--   1 hbase supergroup        646 2023-03-06 17:47 /hbase/mytbl/4580078fb8c824562667355db845cc0d/cf/5f952c6660fc4ad7b0329793e82e8e87
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.HFile --printkv --file /hbase/mytbl/4580078fb8c824562667355db845cc0d/cf/5f952c6660fc4ad7b0329793e82e8e87
+23/03/06 17:48:20 WARN conf.Configuration: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+23/03/06 17:48:21 WARN conf.Configuration: fs.default.name is deprecated. Instead, use fs.defaultFS
+23/03/06 17:48:21 INFO hfile.CacheConfig: Allocating LruBlockCache with maximum size 123.4m
+K: row1/cf:col/1678104815980/Put/vlen=3 V: foo
+K: row2/cf:col/1678104873851/Put/vlen=3 V: bar
+Scanned kv count -> 2
+[training@localhost ~]$ 
+
+

@@ -1,0 +1,64 @@
+[training@localhost ~]$ hive
+Logging initialized using configuration in file:/etc/hive/conf.dist/hive-log4j.properties
+Hive history file=/tmp/training/hive_job_log_training_202303031322_155700240.txt
+hive> add jar
+    > /usr/lib/hive/lib/hive-hbase-handler-0.9.0-cdh4.1.1.jar;
+Added /usr/lib/hive/lib/hive-hbase-handler-0.9.0-cdh4.1.1.jar to class path
+Added resource: /usr/lib/hive/lib/hive-hbase-handler-0.9.0-cdh4.1.1.jar
+hive> add jar /usr/lib/hbase/hbase.jar;  
+Added /usr/lib/hbase/hbase.jar to class path
+Added resource: /usr/lib/hbase/hbase.jar
+hive> create external table hbaseUsrRating4 (userid int, movieid int, rating int) stored by 'org.apache.hadoop.hive.hbase.HBaseStorageHandler' with serdeproperties ("hbase.columns.mapping" = ":key,cf1:movieid,cf1:rating") tblproperties ("hbase.table.name" = "hbaseUsrRating4");
+FAILED: Error in metadata: MetaException(message:HBase table hbaseUsrRating4 doesn't exist while the table is declared as an external table.)
+FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask
+hive> create external table hbaseUserRating4 (userid int, movieid int, rating int) stored by 'org.apache.hadoop.hive.hbase.HBaseStorageHandler' with serdeproperties ("hbase.columns.mapping" = ":key,cf1:movieid,cf1:rating") tblproperties ("hbase.table.name" = "hbaseUserRating4");
+OK
+Time taken: 0.753 seconds
+hive> select * from hbaseUserRating4;
+OK
+10000	42	4
+11000	21	5
+Time taken: 0.366 seconds
+hive> insert overwrite table hbaseUserRating4 select userid, (movieid+1), rating from hbaseUserRatings4;
+FAILED: SemanticException [Error 10001]: Line 1:80 Table not found 'hbaseUserRatings4'
+hive> insert overwrite table hbaseUserRating4 select userid, (movieid+1), rating from hbaseUserRating4; 
+Total MapReduce jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_202303031012_0001, Tracking URL = http://0.0.0.0:50030/jobdetails.jsp?jobid=job_202303031012_0001
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -Dmapred.job.tracker=0.0.0.0:8021 -kill job_202303031012_0001
+Hadoop job information for Stage-0: number of mappers: 1; number of reducers: 0
+2023-03-03 13:27:09,810 Stage-0 map = 0%,  reduce = 0%
+2023-03-03 13:27:13,888 Stage-0 map = 100%,  reduce = 0%, Cumulative CPU 2.62 sec
+2023-03-03 13:27:14,906 Stage-0 map = 100%,  reduce = 0%, Cumulative CPU 2.62 sec
+2023-03-03 13:27:15,929 Stage-0 map = 100%,  reduce = 100%, Cumulative CPU 2.62 sec
+MapReduce Total cumulative CPU time: 2 seconds 620 msec
+Ended Job = job_202303031012_0001
+2 Rows loaded to hbaseuserrating4
+MapReduce Jobs Launched: 
+Job 0: Map: 1   Cumulative CPU: 2.62 sec   HDFS Read: 0 HDFS Write: 0 SUCCESS
+Total MapReduce CPU Time Spent: 2 seconds 620 msec
+OK
+Time taken: 11.571 seconds
+hive> insert overwrite table hbaseUserRating4 select userid, movieid ,rating from userrating;
+Total MapReduce jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_202303031012_0002, Tracking URL = http://0.0.0.0:50030/jobdetails.jsp?jobid=job_202303031012_0002
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -Dmapred.job.tracker=0.0.0.0:8021 -kill job_202303031012_0002
+Hadoop job information for Stage-0: number of mappers: 1; number of reducers: 0
+2023-03-03 13:29:01,842 Stage-0 map = 0%,  reduce = 0%
+2023-03-03 13:29:44,150 Stage-0 map = 100%,  reduce = 0%, Cumulative CPU 5.24 sec
+2023-03-03 13:29:45,158 Stage-0 map = 100%,  reduce = 0%, Cumulative CPU 5.24 sec
+2023-03-03 13:29:46,167 Stage-0 map = 100%,  reduce = 0%, Cumulative CPU 5.24 sec
+2023-03-03 13:29:47,175 Stage-0 map = 100%,  reduce = 100%, Cumulative CPU 5.24 sec
+MapReduce Total cumulative CPU time: 5 seconds 240 msec
+Ended Job = job_202303031012_0002
+100000 Rows loaded to hbaseuserrating4
+MapReduce Jobs Launched: 
+Job 0: Map: 1   Cumulative CPU: 5.24 sec   HDFS Read: 0 HDFS Write: 0 SUCCESS
+Total MapReduce CPU Time Spent: 5 seconds 240 msec
+OK
+Time taken: 49.03 seconds
+hive> 
+

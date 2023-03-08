@@ -1,0 +1,168 @@
+[training@localhost ~]$ hadoop fs -ls 
+Found 28 items
+drwxr-xr-x   - training supergroup          0 2023-02-13 15:43 DC
+drwxr-xr-x   - training supergroup          0 2023-02-09 03:43 OEMfile
+drwxr-xr-x   - training supergroup          0 2023-02-08 14:16 OEfile1
+drwxr-xr-x   - training supergroup          0 2023-02-08 13:25 OddEven
+drwxr-xr-x   - training supergroup          0 2023-02-10 11:49 WD
+drwxr-xr-x   - training supergroup          0 2023-02-08 19:44 Wordcount1
+drwxr-xr-x   - training supergroup          0 2023-02-13 20:17 avg
+drwxr-xr-x   - training supergroup          0 2023-02-14 07:52 combiner
+drwxr-xr-x   - training supergroup          0 2023-01-24 12:55 des
+drwxr-xr-x   - training supergroup          0 2023-01-23 21:31 dest
+drwxr-xr-x   - training supergroup          0 2023-02-16 15:41 genre
+-rw-r--r--   1 training supergroup        202 2023-02-14 14:08 hivework
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:52 hiveworks
+drwxr-xr-x   - training supergroup          0 2023-02-14 08:09 index
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:45 movie
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:45 moviegenre
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:46 movierating
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:46 occupation
+drwxr-xr-x   - training supergroup          0 2023-02-07 21:33 partitiondemo
+drwxr-xr-x   - training supergroup          0 2023-02-10 15:35 search
+drwxr-xr-x   - training supergroup          0 2023-01-23 21:52 source
+drwxr-xr-x   - training supergroup          0 2023-01-24 12:59 source1
+drwxr-xr-x   - training supergroup          0 2023-02-12 13:38 turbain
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:46 user
+drwxr-xr-x   - training supergroup          0 2023-02-10 19:53 weather
+drwxr-xr-x   - training supergroup          0 2023-02-10 19:51 weather.txt
+drwxr-xr-x   - training supergroup          0 2023-02-14 06:26 wordco
+drwxr-xr-x   - training supergroup          0 2023-02-07 15:35 wordcount
+[training@localhost ~]$ hadoop fs -ls /user/training
+^[[DFound 28 items
+drwxr-xr-x   - training supergroup          0 2023-02-13 15:43 /user/training/DC
+drwxr-xr-x   - training supergroup          0 2023-02-09 03:43 /user/training/OEMfile
+drwxr-xr-x   - training supergroup          0 2023-02-08 14:16 /user/training/OEfile1
+drwxr-xr-x   - training supergroup          0 2023-02-08 13:25 /user/training/OddEven
+drwxr-xr-x   - training supergroup          0 2023-02-10 11:49 /user/training/WD
+drwxr-xr-x   - training supergroup          0 2023-02-08 19:44 /user/training/Wordcount1
+drwxr-xr-x   - training supergroup          0 2023-02-13 20:17 /user/training/avg
+drwxr-xr-x   - training supergroup          0 2023-02-14 07:52 /user/training/combiner
+drwxr-xr-x   - training supergroup          0 2023-01-24 12:55 /user/training/des
+drwxr-xr-x   - training supergroup          0 2023-01-23 21:31 /user/training/dest
+drwxr-xr-x   - training supergroup          0 2023-02-16 15:41 /user/training/genre
+-rw-r--r--   1 training supergroup        202 2023-02-14 14:08 /user/training/hivework
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:52 /user/training/hiveworks
+drwxr-xr-x   - training supergroup          0 2023-02-14 08:09 /user/training/index
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:45 /user/training/movie
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:45 /user/training/moviegenre
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:46 /user/training/movierating
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:46 /user/training/occupation
+drwxr-xr-x   - training supergroup          0 2023-02-07 21:33 /user/training/partitiondemo
+drwxr-xr-x   - training supergroup          0 2023-02-10 15:35 /user/training/search
+drwxr-xr-x   - training supergroup          0 2023-01-23 21:52 /user/training/source
+drwxr-xr-x   - training supergroup          0 2023-01-24 12:59 /user/training/source1
+drwxr-xr-x   - training supergroup          0 2023-02-12 13:38 /user/training/turbain
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:46 /user/training/user
+drwxr-xr-x   - training supergroup          0 2023-02-10 19:53 /user/training/weather
+drwxr-xr-x   - training supergroup          0 2023-02-10 19:51 /user/training/weather.txt
+drwxr-xr-x   - training supergroup          0 2023-02-14 06:26 /user/training/wordco
+drwxr-xr-x   - training supergroup          0 2023-02-07 15:35 /user/training/wordcount
+[training@localhost ~]$ cd -/training_materials/developer/data
+bash: cd: -/: invalid option
+cd: usage: cd [-L|-P] [dir]
+[training@localhost ~]$ cd /training_materials/developer/data
+bash: cd: /training_materials/developer/data: No such file or directory
+[training@localhost ~]$ hadoop fs cd /training_materials/developer/data
+cd: Unknown command
+[training@localhost ~]$ cd training_materials/developer/data
+[training@localhost data]$ ls
+access_log.gz  invertedIndexInput.tgz  movielens-small.sql  shakespeare-stream.tar.gz
+bible.tar.gz   movielens.readme        movielens.sql        shakespeare.tar.gz
+[training@localhost data]$ cd shakespeare
+bash: cd: shakespeare: No such file or directory
+[training@localhost data]$ tar zxvf shakespeare.tar.gz
+shakespeare/
+shakespeare/comedies
+shakespeare/glossary
+shakespeare/histories
+shakespeare/poems
+shakespeare/tragedies
+[training@localhost data]$ cd shakespeare
+[training@localhost shakespeare]$ ls
+comedies  glossary  histories  poems  tragedies
+[training@localhost shakespeare]$ hadoop fs -put glossary /user/training/glossary
+[training@localhost shakespeare]$ hadoop fs -ls /user/training
+Found 29 items
+drwxr-xr-x   - training supergroup          0 2023-02-13 15:43 /user/training/DC
+drwxr-xr-x   - training supergroup          0 2023-02-09 03:43 /user/training/OEMfile
+drwxr-xr-x   - training supergroup          0 2023-02-08 14:16 /user/training/OEfile1
+drwxr-xr-x   - training supergroup          0 2023-02-08 13:25 /user/training/OddEven
+drwxr-xr-x   - training supergroup          0 2023-02-10 11:49 /user/training/WD
+drwxr-xr-x   - training supergroup          0 2023-02-08 19:44 /user/training/Wordcount1
+drwxr-xr-x   - training supergroup          0 2023-02-13 20:17 /user/training/avg
+drwxr-xr-x   - training supergroup          0 2023-02-14 07:52 /user/training/combiner
+drwxr-xr-x   - training supergroup          0 2023-01-24 12:55 /user/training/des
+drwxr-xr-x   - training supergroup          0 2023-01-23 21:31 /user/training/dest
+drwxr-xr-x   - training supergroup          0 2023-02-16 15:41 /user/training/genre
+-rw-r--r--   1 training supergroup      58976 2023-03-06 17:21 /user/training/glossary
+-rw-r--r--   1 training supergroup        202 2023-02-14 14:08 /user/training/hivework
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:52 /user/training/hiveworks
+drwxr-xr-x   - training supergroup          0 2023-02-14 08:09 /user/training/index
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:45 /user/training/movie
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:45 /user/training/moviegenre
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:46 /user/training/movierating
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:46 /user/training/occupation
+drwxr-xr-x   - training supergroup          0 2023-02-07 21:33 /user/training/partitiondemo
+drwxr-xr-x   - training supergroup          0 2023-02-10 15:35 /user/training/search
+drwxr-xr-x   - training supergroup          0 2023-01-23 21:52 /user/training/source
+drwxr-xr-x   - training supergroup          0 2023-01-24 12:59 /user/training/source1
+drwxr-xr-x   - training supergroup          0 2023-02-12 13:38 /user/training/turbain
+drwxr-xr-x   - training supergroup          0 2023-02-16 14:46 /user/training/user
+drwxr-xr-x   - training supergroup          0 2023-02-10 19:53 /user/training/weather
+drwxr-xr-x   - training supergroup          0 2023-02-10 19:51 /user/training/weather.txt
+drwxr-xr-x   - training supergroup          0 2023-02-14 06:26 /user/training/wordco
+drwxr-xr-x   - training supergroup          0 2023-02-07 15:35 /user/training/wordcount
+[training@localhost shakespeare]$ hadoop fs -cat glossary | tail -n 50
+WITTOL	a contented cuckold
+WITTY	intelligent
+WOMAN-TIRED	hen-pecked
+WONDERED	marvellously gifted
+WOOD	mad
+WOODCOCK	a simpleton
+WOODMAN	a forester, huntsman
+	A cant term for a wencher
+WOOLWARD	shirtless
+WORD	to flatter or put off with words
+	To repeat the words of a song
+WORLD	'To go to the world' is to get married
+	So 'a woman of the world' is a married woman
+WORM	a serpent
+WORSER	worse
+WORSHIP	to honour
+WORTH	wealth, fortune
+WORTS	cabbages
+WOT	to know
+WOUND	twisted about
+WREAK	vengeance
+WREAK	to avenge
+WREAKFUL	revengeful, avenging
+WREST	an instrument used for tuning a harp
+WRIT	gospel, truth
+WRITHLED	shrivelled
+WROTH	calamity, misfortune
+WRUNG	twisted, strained
+WRY	to swerve
+
+XANTHIPPE	Socrate's scolding wife
+
+YARE	ready, being understood
+YARELY	readily
+YAW	out of control
+Y-CLAD	clad
+Y-CLEPED	called, named
+YEARN	to grieve, vex
+	
+YELLOWNESS	jealousy
+YELLOWS	a disease of horses
+YEOMAN	a sheriff's officer
+YIELD	to reward
+	To report
+YOND	and yonder
+YOUNKER	tyro
+
+
+ZANY	a clown, gull
+	[END]
+[training@localhost shakespeare]$ 
+
